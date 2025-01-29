@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Detector</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Mood Detector</h1>
+        <form method="post">
+            <input type="text" name="text" placeholder="Enter your text here..." required>
+            <button type="submit">Detect Mood</button>
+        </form>
+        {% if prediction %}
+            <h3>Results:</h3>
+            <ul>
+                {% for mood, percentage in prediction.items() %}
+                    <li>{{ mood }}: {{ percentage|round(2) }}%</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #8e44ad, #ff6b81);
+        color: white;
+        text-align: center;
+        padding: 50px;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .container h3 {
+        text-align: start;
+        margin-left: 25px;
+        font-size: 24px;
+    }
+
+    input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+    }
+
+    button {
+        background: #ff6b81;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #e74c3c;
+    }
+
+    .container ul li {
+        width: 200px;
+        text-align: start;
+        padding-top: 8px;
+    }
+
+
+</style>
